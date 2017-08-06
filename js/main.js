@@ -12,7 +12,7 @@ $(document).ready(function () {
         }
         listHTML += "<li><strong>" + alert.start_date + ' - ' + alert.end_date + "</strong>: " + alert.description + "</li>"
       })
-      listHTML += "</ul></li"
+      listHTML += "</ul></li>"
     });
    
     $('#alertlist').html(listHTML)
