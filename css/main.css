@@ -1,0 +1,4 @@
+li.alerts {line-height:1.9;padding:5px 15px;margin-bottom:10px}
+ul.alerts {padding-left: 0;list-style-type: none;}
+.bg-warning{border-left: 3px solid #f0ad4e;background:#fcf8e3;}
+.bg-danger {background-color: #f2dede; border-left: 3px solid #d33a35}
