@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // Fetch our events
   var url = 'https://fpcc-staging.smartchicagoapps.org/alerts/list.json'
-  url = 'http://localhost:8080/alerts/list.json'
+  //url = 'http://localhost:8080/alerts/list.json'
   $.getJSON( url, function ( data ) {
     var items = [];
     var listHTML = ''
