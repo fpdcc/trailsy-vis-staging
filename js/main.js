@@ -8,10 +8,10 @@ $(document).ready(function () {
     var globalAlerts = data['global']
     var locationAlerts = data['locations']
     if (globalAlerts.length > 0) {
-      listHTML += "<ul class='alerts' id='global'><strong>Global Alerts</strong>"
+      listHTML += "<ul class='alerts' id='global'><strong>General Alerts</strong>"
       $.each(globalAlerts, function(key, alert) {
         if (alert.end_date === null) {
-          alert.end_date = 'No end date set'
+          alert.end_date = '???'
         }
         var classType = "warning"
         var alertTypeName = "ALERT"
@@ -28,10 +28,10 @@ $(document).ready(function () {
     $.each(locationAlerts, function(key, val) {
       console.log('val.map_id = ' + val.map_id)
       var map_id = val.map_id.replace(/[& ]/g, '+')
-      listHTML += "<ul class='alerts' id='" + map_id + "'><strong><a href='https://fpcc-staging.smartchicagoapps.org/#/?" + val.type + "=" + map_id + "'>" + val.name + "</a></strong>"
+      listHTML += "<ul class='alerts' id='" + map_id + "'><strong><h4><a href='https://fpcc-staging.smartchicagoapps.org/#/?" + val.type + "=" + map_id + "'>" + val.name + "</a></h4></strong>"
       $.each(val.alerts, function(key, alert) {
         if (alert.end_date === null) {
-          alert.end_date = 'No end date set'
+          alert.end_date = '???'
         }
         var classType = "warning"
         var alertTypeName = "ALERT"
