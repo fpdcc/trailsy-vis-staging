@@ -1,8 +1,9 @@
 $(document).ready(function () {
   // Fetch our events
-  var url = 'https://fpcc-staging.smartchicagoapps.org/alerts/list.json'
+  var url_base = 'https://fpcc-staging.smartchicagoapps.org'
+  var data_url = url_base + '/alerts/list.json'
   //url = 'http://localhost:8080/alerts/list.json'
-  $.getJSON( url, function ( data ) {
+  $.getJSON( data_url, function ( data ) {
     var items = [];
     var listHTML = ''
     var globalAlerts = data['global']
@@ -28,7 +29,7 @@ $(document).ready(function () {
     $.each(locationAlerts, function(key, val) {
       console.log('val.map_id = ' + val.map_id)
       var map_id = val.map_id.replace(/[& ]/g, '+')
-      listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='https://fpcc-staging.smartchicagoapps.org/#/?" + val.type + "=" + map_id + "'>" + val.name + "</a></h4>"
+      listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h4>"
       $.each(val.alerts, function(key, alert) {
         if (alert.end_date === null) {
           alert.end_date = '???'
