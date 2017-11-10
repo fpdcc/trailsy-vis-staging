@@ -12,7 +12,7 @@ $(document).ready(function () {
       listHTML += "<ul class='alerts' id='global'><h4>General Alerts</h4>"
       $.each(globalAlerts, function(key, alert) {
         if (alert.end_date === null) {
-          alert.end_date = '???'
+          alert.end_date = '?'
         }
         var classType = "warning"
         var alertTypeName = "ALERT"
