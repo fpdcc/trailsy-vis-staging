@@ -32,7 +32,7 @@ $(document).ready(function () {
       listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h4>"
       $.each(val.alerts, function(key, alert) {
         if (alert.end_date === null) {
-          alert.end_date = '???'
+          alert.end_date = '?'
         }
         var classType = "warning"
         var alertTypeName = "ALERT"
