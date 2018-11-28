@@ -5,6 +5,7 @@ $(document).ready(function () {
 
     var urlParams = new URLSearchParams(window.location.search);
     var myParam = urlParams.get('id');
+    $('#alertlist').html("Open")
     $.getJSON( data_url, function ( data ) {
       var items = [];
       var listHTML = ''
