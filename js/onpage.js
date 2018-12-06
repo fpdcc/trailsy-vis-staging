@@ -1,4 +1,4 @@
-$(document).ready(function () {
+jQuery(function ($) {
     // Fetch our events
     var url_base = 'https://map.fpdcc.com'
     var data_url = url_base + '/alerts/list.json'
@@ -18,7 +18,7 @@ $(document).ready(function () {
         console.log(alertdiv.parentElement.dataset.id);
         var divLocId = alertdiv.parentElement.dataset.id
         var divLocType = alertdiv.parentElement.dataset.loctype
-        listHTML = 'Open'
+        listHTML = '<ul class="alerts"><li class="bg_open"><span class="label_open">OPEN</span> Parking lot open during normal hours.</li></ul>'
       
         $.each(locationAlerts, function(key, val) {
             console.log('val.map_id = ' + val.map_id)
@@ -36,7 +36,7 @@ $(document).ready(function () {
                         alertTypeName = "CLOSURE"
                     }
             
-                    listHTML += "<li class='alerts bg-" + classType + "'><span class='label label-" + classType + "'>" + alertTypeName + "</span> <strong>" + alert.start_date + " - " + alert.end_date + "</strong>: " + alert.description + "</li>"
+                    listHTML += "<li class='alerts bg_" + classType + "'><span class='label_" + classType + "'>" + alertTypeName + "</span> <strong>" + alert.start_date + " - " + alert.end_date + "</strong>: " + alert.description + "</li>"
                 })
                 listHTML += "</ul>"
                 console.log(listHTML)
@@ -54,5 +54,3 @@ $(document).ready(function () {
       // }).appendTo( "body" );
     });
 });
-  
-  
