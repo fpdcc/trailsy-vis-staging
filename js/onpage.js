@@ -18,7 +18,7 @@ jQuery(function ($) {
         console.log(alertdiv.parentElement.dataset.id);
         var divLocId = alertdiv.parentElement.dataset.id
         var divLocType = alertdiv.parentElement.dataset.loctype
-        listHTML = '<ul class="alerts"><li class="bg_open"><span class="label_open">OPEN</span> Parking lot open during normal hours.</li></ul>'
+        listHTML = '<ul class="alerts"><li class="bg_open"><span class="label_open">OPEN</span> Open during normal hours.</li></ul>'
       
         $.each(locationAlerts, function(key, val) {
             console.log('val.map_id = ' + val.map_id)
