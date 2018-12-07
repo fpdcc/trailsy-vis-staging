@@ -35,25 +35,34 @@ jQuery(function ($) {
         var divLocType = alertdiv.parentElement.dataset.loctype
         listHTML = ''
 
-        $.each(locationAlerts, function(key, val) {
-            if (val.type == divLocType) {
-                if (divLocId == 'all') {
-                    var map_id = val.map_id.replace(/[& ]/g, '+')
-                    listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h4>"
-                    listHTML += drawAlerts(val.alerts)
-                    listHTML += "</ul>"
-                } else if (val.id == divLocId) {
-                    listHTML = drawAlerts(val.alerts)
-                    if (listHTML != '') {
-                        listHTML = "<ul class='alerts' id='" + divLocId + '-' + divLocType + "'>" + listHTML + '</ul>'
-                    }
-                    return false
-                }
+        if (divLocType == 'global') {
+            if (globalAlerts.length > 0) {
+                listHTML += "<ul class='alerts' id='global'>"
+                listHTML += drawAlerts(globalAlerts)
+                listHTML += "</ul>"
+            } else {
+                listHTML = "No Global Alerts"
             }
-        })
-
-        listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><span class="label_open">NO ISSUES</span> Open during normal hours.</li></ul>'
-
+        } else {
+            $.each(locationAlerts, function(key, val) {
+                if (val.type == divLocType) {
+                    if (divLocId == 'all') {
+                        var map_id = val.map_id.replace(/[& ]/g, '+')
+                        listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h4>"
+                        listHTML += drawAlerts(val.alerts)
+                        listHTML += "</ul>"
+                    } else if (val.id == divLocId) {
+                        listHTML = drawAlerts(val.alerts)
+                        if (listHTML != '') {
+                            listHTML = "<ul class='alerts' id='" + divLocId + '-' + divLocType + "'>" + listHTML + '</ul>'
+                        }
+                        return false
+                    }
+                }
+            })
+            listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><span class="label_open">NO ISSUES</span> Open during normal hours.</li></ul>'
+        }
+        
         alertdiv.innerHTML = listHTML
       })
         
