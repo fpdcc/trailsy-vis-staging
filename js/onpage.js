@@ -1,6 +1,7 @@
 jQuery(function ($) {
     // Fetch our events
     var url_base = 'https://map.fpdcc.com'
+    url_base = 'https://map-staging.fpdcc.net'
     var data_url = url_base + '/alerts/list.json'
 
     var drawAlerts = function (alerts) {
