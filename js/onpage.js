@@ -20,6 +20,10 @@ jQuery(function ($) {
         return html
     }
 
+    var fullDate = new Date()
+    var twoDigitMonth = ((fullDate.getMonth()+1).length === 1)? ('0' + fullDate.getMonth()+1) : (fullDate.getMonth()+1)
+    var currentDate = twoDigitMonth + "/" + fullDate.getDate() + "/" +  fullDate.getFullYear()
+
     var alertlistdivs = Array.from( document.getElementsByClassName('alertlist'))
 
     console.log(alertlistdivs)
@@ -60,7 +64,7 @@ jQuery(function ($) {
                     }
                 }
             })
-            listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><span class="label_open">NO ISSUES</span> Open during normal hours.</li></ul>'
+            listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><strong>' + currentDate + '</strong>: <span class="label_open">NO ISSUES</span> Open during normal hours.</li></ul>'
         }
         
         alertdiv.innerHTML = listHTML
