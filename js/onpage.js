@@ -53,7 +53,7 @@ jQuery(function ($) {
                 if (val.type == divLocType) {
                     if (divLocId == 'all') {
                         var map_id = val.map_id.replace(/[& ]/g, '+')
-                        listHTML += "<ul class='alerts' id='" + map_id + "'><h4><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h4>"
+                        listHTML += "<ul class='alerts' id='" + map_id + "'><h3><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h3>"
                         listHTML += drawAlerts(val.alerts)
                         listHTML += "</ul>"
                     } else if (val.id == divLocId) {
