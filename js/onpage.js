@@ -42,11 +42,11 @@ jQuery(function ($) {
 
         if (divLocType == 'global') {
             if (globalAlerts.length > 0) {
-                listHTML += "<ul class='alerts' id='global'>"
+                listHTML += "<ul class='alerts' id='global'><h2>General Alerts</h2>"
                 listHTML += drawAlerts(globalAlerts)
                 listHTML += "</ul>"
             } else {
-                listHTML = "No Global Alerts"
+                listHTML = ""
             }
         } else {
             $.each(locationAlerts, function(key, val) {
