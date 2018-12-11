@@ -65,7 +65,7 @@ jQuery(function ($) {
                     }
                 }
             })
-            listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><strong>' + currentDate + '</strong>: <span class="label_open">NO ISSUES</span> Open during normal hours.</li></ul>'
+            listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><span class="label_open">NO ISSUES</span> <strong>' + currentDate + '</strong>: Open during normal hours.</li></ul>'
         }
         
         alertdiv.innerHTML = listHTML
