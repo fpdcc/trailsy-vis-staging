@@ -27,7 +27,7 @@ jQuery(function ($) {
 
     var alertlistdivs = Array.from( document.getElementsByClassName('alertlist'))
 
-    console.log(alertlistdivs)
+    //console.log(alertlistdivs)
     $.getJSON( data_url, function ( data ) {
       var items = [];
       var listHTML = ''
@@ -35,12 +35,13 @@ jQuery(function ($) {
       var locationAlerts = data['locations']
       // Iterate through all alertlist divs
       alertlistdivs.forEach(function(alertdiv) {
-        console.log(alertdiv.parentElement.dataset.id);
+       // console.log(alertdiv.parentElement.dataset.id);
         var divLocId = alertdiv.parentElement.dataset.id
         var divLocType = alertdiv.parentElement.dataset.loctype
         listHTML = ''
 
         if (divLocType == 'global') {
+            console.log("global div")
             if (globalAlerts.length > 0) {
                 listHTML += "<ul class='alerts' id='global'><h2>General Alerts</h2>"
                 listHTML += drawAlerts(globalAlerts)
@@ -49,14 +50,18 @@ jQuery(function ($) {
                 listHTML = ""
             }
         } else {
+            console.log("some sort of location div")
+            var combinedAlerts = globalAlerts.concat
             $.each(locationAlerts, function(key, val) {
                 if (val.type == divLocType) {
                     if (divLocId == 'all') {
+                        console.log("all div for " + divLocType)
                         var map_id = val.map_id.replace(/[& ]/g, '+')
                         listHTML += "<ul class='alerts' id='" + map_id + "'><h3><a href='" + url_base + "/#/?" + val.type + "=" + map_id + "' target='_top'>" + val.name + "</a></h3>"
                         listHTML += drawAlerts(val.alerts)
                         listHTML += "</ul>"
                     } else if (val.id == divLocId) {
+                        console.log("id = " + val.id)
                         listHTML = drawAlerts(val.alerts)
                         if (listHTML != '') {
                             listHTML = "<ul class='alerts' id='" + divLocId + '-' + divLocType + "'>" + listHTML + '</ul>'
@@ -65,6 +70,9 @@ jQuery(function ($) {
                     }
                 }
             })
+            if (divLocId != 'all' && globalAlerts.length > 0) {
+                listHTML = listHTML + "<ul class='alerts'>" + drawAlerts(globalAlerts) + "</ul>"
+            }
             listHTML = listHTML ? listHTML : '<ul class="alerts"><li class="bg_open"><span class="label_open">NO ISSUES</span> <strong>' + currentDate + '</strong>: Open during normal hours.</li></ul>'
         }
         
