@@ -16,7 +16,11 @@ jQuery(function ($) {
                 classType = "danger"
                 alertTypeName = "CLOSURE"
             }
-            html += "<li class='alerts bg_" + classType + "'><span class='label_" + classType + "'>" + alertTypeName + "</span> <strong>" + alert.start_date + " - " + alert.end_date + "</strong>: " + alert.description + "</li>"
+            html += "<li class='alerts bg_" + classType + "'><span class='label_" + classType + "'>" + alertTypeName + "</span> <strong>" + alert.start_date + " - " + alert.end_date + "</strong>: " + alert.description
+            if (alert.link) {
+                html += ' <a href="' + alert.link + '">More information ></a>'
+            }
+            html += "</li>"
         })
         return html
     }
